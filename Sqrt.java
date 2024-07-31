@@ -1,5 +1,5 @@
 public class Sqrt {
-    public static double sq(int x)
+    public static int sq(int x)
     {
         if(x==0 || x==1)
         {
@@ -26,7 +26,7 @@ public class Sqrt {
     }
     public static void main(String[] args) {
         int x=Integer.parseInt(args[0]);
-        double result=sq(x);
+        int result=sq(x);
         if(result*result==x)
         {
             System.out.println("The square root of "+x+" is "+result);
