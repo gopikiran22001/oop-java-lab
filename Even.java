@@ -1,10 +1,7 @@
 public class Even {
     public static void main(String[] args) {
-        int i=0;
         int a[]={1,9,15,5,7,8,2,6,3,4};
-    for (int s : a) {
-      i++;
-    }
+        int i=a.length;
     for(int k=0;k<i;k++) {
         for(int j=0;j<i-1;j++) {
             if(a[j+1]%2==0)
