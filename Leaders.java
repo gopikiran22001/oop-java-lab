@@ -1,23 +1,15 @@
 public class Leaders
 {
-   public static void main(String args[])
-   {
-    int a[]={1,9,4,5,7,8,2,6,3,0};
-      int i=a.length;
-    for(int k=0;k<i;k++)
-    {
-      int temp=0;
-      for(int e=k+1;e<i;e++)
-      {
-         if(a[k]>a[e])
-         {
-            temp++;
-         }
-      }
-      if(temp==i-k-1 && temp!=0)
-      {
-         System.out.println("Leader:"+a[k]);
-      }
+    public static void main(String[] args) {
+        int[] a={7, 1, 5, 3, 6, 4};
+        int max_ele=a[a.length-1];
+        for(int x=a.length-2;x>=0;x--)
+        {
+            if(a[x]>max_ele)
+            {
+                System.out.print(a[x]+" ");
+                max_ele=a[x];
+            }
+        }
     }
-   } 
 }
