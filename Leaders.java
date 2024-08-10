@@ -7,7 +7,7 @@ public class Leaders
         {
             if(a[x]>max_ele)
             {
-                System.out.print(a[x]+" ");
+                System.out.println("Leader:"+a[x]);
                 max_ele=a[x];
             }
         }
