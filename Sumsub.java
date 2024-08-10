@@ -1,20 +1,21 @@
 public class Sumsub {
-    public static int maxSub(int[] a,int k) {
-        int x = a[0];
-        int y = a[0];
-
-        for (int i = 1; i < k; i++) {
-            x = Math.max(a[i], x + a[i]);
-            y = Math.max(y, x);
-        }
-
-        return y;
-    }
-
     public static void main(String[] args) {
         int[] a={-2,1,-3,4,1,2,1,-5,4};
         int i=a.length; 
-        int z=maxSub(a,i);
-        System.out.println("The maximum sum of a contiguous subarray is: " + z);
+        int final_sum=a[0];
+        int  current_sum=0;
+        for(int x=0;x<a.length;x++)
+        {
+            current_sum+=a[x];
+            if(current_sum>final_sum)
+            {
+                final_sum=current_sum;
+            }
+            if(current_sum<0)
+            {
+                current_sum=0;
+            }
+        }
+        System.out.println("The maximum sum of a contiguous subarray is: " + final_sum);
     }
 }
