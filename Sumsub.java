@@ -1,7 +1,6 @@
 public class Sumsub {
     public static void main(String[] args) {
-        int[] a={-2,1,-3,4,1,2,1,-5,4};
-        int i=a.length; 
+        int[] a={-2, 1, -3, 4, -1, 2, 1, -5, 4};
         int final_sum=a[0];
         int  current_sum=0;
         for(int x=0;x<a.length;x++)
