@@ -17,9 +17,10 @@ public class Permutation
 	}
 	public static void main(String[] args)
 	{
-	    System.out.println("Enter a String:");
 	    Scanner sc=new Scanner(System.in);
+		System.out.println("Enter a String:");
 		String str=sc.nextLine();
+		System.out.println();
 		per(str," ");
 		sc.close();
 	}
