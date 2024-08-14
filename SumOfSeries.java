@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class SumOfseries
 {
         static int sum(int x)
