@@ -21,7 +21,7 @@ public class Permutation
 		System.out.println("Enter a String:");
 		String str=sc.nextLine();
 		System.out.println();
-		per(str," ");
+		per(str,"");
 		sc.close();
 	}
 }
