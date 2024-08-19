@@ -37,6 +37,7 @@ class Book
         System.out.println("Author:  "+author);
         System.out.println("ISBN:  "+isbn);
         System.out.println("Price:  "+price);
+        System.out.println();
     }
 }
 public class Stationary
@@ -49,16 +50,12 @@ public class Stationary
         Book b4=new Book(b2);
         System.out.println("Default:");
         b1.displayBookInfo();
-        System.out.println();
         System.out.println("Default Price:");
         b2.displayBookInfo();
-        System.out.println();
         System.out.println("Parameterized:");
         b3.displayBookInfo();
-        System.out.println();
         System.out.println("Copy:");
         b2.displayBookInfo();
-        System.out.println();
         System.out.println("Update:");
         b4.updatePrice(50.2);
         b4.displayBookInfo();
