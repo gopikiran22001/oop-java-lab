@@ -7,7 +7,7 @@ class Shape
         color="green";
         filled=true;
     }
-    shape(String color,boolean filled)
+    Shape(String color,boolean filled)
     {
         this.color=color;
         this.filled=filled;
@@ -38,8 +38,8 @@ class Circle extends Shape
     }
     Circle(double radius,String color,boolean filled)
     {
+        super(color,filled);
         this.radius=radius;
-        Shape(color,filled);
     }
     double getRadius()
     {
