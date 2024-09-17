@@ -57,11 +57,18 @@ class Circle extends Shape
     {
         return 2*radius*3.14;
     }
+    void display()
+    {
+        System.out.println("Circle with radius "+radius+" has area "+getArea()+" and perimeter "+getPerimeter());
+        System.out.println("Color: "+color+" and filled: "+filled);
+    }
 }
 public class Shap
 {
     public static void main(String[] args)
     {
-        
+        Circle c=new Circle(5.0, "red", true);
+        c.display();
+
     }
 }
