@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -46,10 +45,11 @@ class Electronics extends Product {
         this.quantity = quantity;
     }
     public String getDetails() {
-        return "Electronics[Name:"+ name +",ProductID:"+productId+",Price:"+price+",Quantity:"+quantity+",Brand:"+brand+",warrantyPeriod:"+warranty+" years]";
+        return "Electronics [Name:"+ name +",ProductID:"+productId+",Price:"+calcDisc()+",Quantity:"+quantity+",Brand:"+brand+",warrantyPeriod:"+warranty+" years]";
     }
 
     public double calcDisc() {
+        double price=this.price*quantity;
         return price-((price*10)/100);
     }
     public int getWarranty() {
@@ -121,10 +121,11 @@ class Clothing extends Product {
         this.quantity = quantity;
     }
     public String getDetails() {
-        return "Clothing[Name:"+ name +",ProductID:"+productId+",Price:"+price+",Quantity:"+quantity+",Size:"+size+",Material:"+material+"]";
+        return "Clothing [Name:"+ name +",ProductID:"+productId+",Price:"+calcDisc()+",Quantity:"+quantity+",Size:"+size+",Material:"+material+"]";
     }
 
     public double calcDisc() {
+        double price=this.price*quantity;
         return price-((price*10)/100);
     }
 }
@@ -180,10 +181,11 @@ class Grocery extends Product {
         this.quantity = quantity;
     }
     public String getDetails() {
-        return "Grocery[Name:"+ name +",ProductID:"+productId+",Price:"+price+",Quantity:"+quantity+",Date:"+date+",isOrganic:"+isOrg+"]";
+        return "Grocery [Name:"+ name +",ProductID:"+productId+",Price:"+calcDisc()+",Quantity:"+quantity+",Date:"+date+",isOrganic:"+isOrg+"]";
     }
 
     public double calcDisc() {
+        double price=this.price*quantity;
         return price-((price*10)/100);
     }
 }
@@ -208,8 +210,10 @@ class ShoppingCart {
 }
 public class Ecommerce {
     public static void main(String[] args) {
+        ShoppingCart sh=new ShoppingCart();
 
         Electronics electronics=new Electronics();
+
         electronics.setName("Laptop");
         electronics.setProductId("2ACMO990");
         electronics.setBrand("Lenova");
@@ -217,13 +221,33 @@ public class Ecommerce {
         electronics.setQuantity(10);
         electronics.setWarranty(3);
 
-        ShoppingCart sh=new ShoppingCart();
         sh.add(electronics);
+
+        Clothing clothing=new Clothing();
+
+        clothing.setName("Suit");
+        clothing.setPrice(5000);
+        clothing.setMaterial("Cotton Blend");
+        clothing.setQuantity(100);
+        clothing.setProductId("4DGHY500T");
+        clothing.setSize("XL");
+
+        sh.add(clothing);
+
+        Grocery grocery=new Grocery();
+
+        grocery.setDate("22-05-2024");
+        grocery.setName("Bananna");
+        grocery.setPrice(60);
+        grocery.setQuantity(600);
+        grocery.setProductId("6YUIPO333");
+        grocery.setOrg(true);
+
+        sh.add(grocery);
 
         for(Product p:sh.getList()) {
             System.out.println(p.getDetails());
         }
-
         System.out.println("Total:"+sh.calcTot());
     }
 }
