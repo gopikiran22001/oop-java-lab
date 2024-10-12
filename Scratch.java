@@ -89,7 +89,7 @@ class Manage {
     }
 }
 
-class Scratch {
+public class Scratch {
     public static void main(String[] args) {
         Manage manage=new Manage();
         String t=manage.registerCustomer("gopi","@1234","55452545");
