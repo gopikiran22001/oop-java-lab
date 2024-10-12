@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Random;
 
 class InvalidCustomerException extends Exception {
@@ -9,53 +7,53 @@ class InvalidCustomerException extends Exception {
     }
 }
 class Customer {
-    private String customerId,name,email,phoneNumber;
+    protected String customerId,name,email,phoneNumber;
+
+    public Customer() {
+    }
+
+    public Customer(String customerId, String name, String email, String phoneNumber) {
+        this.customerId = customerId;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
 
     public String getCustomerId() {
         return customerId;
-    }
-
-    public void setCustomerId(String customerId) throws InvalidCustomerException {
-        if (customerId == null || customerId.equals("")) {
-            throw new InvalidCustomerException("Enter customerId Correctly");
-        }
-        this.customerId = customerId;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) throws InvalidCustomerException {
-        if (name == null || name.equals("")) {
-            throw new InvalidCustomerException("Enter Name Correctly");
-        }
-        this.name = name;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) throws InvalidCustomerException {
-        if (email == null || email.equals("")) {
-            throw new InvalidCustomerException("Enter email Correctly");
-        }
-        this.email = email;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) throws InvalidCustomerException {
-        if (phoneNumber == null || phoneNumber.equals("")) {
-            throw new InvalidCustomerException("Enter phoneNumber Correctly");
-        }
-        this.phoneNumber = phoneNumber;
-    }
-    public String display() {
+    public String toString() {
         return "Customer [ Customer ID:"+customerId+", Customer Name:"+name+", Customer Phone:"+phoneNumber+", Customer email:"+email+" ]";
+    }
+}
+class NotFoundCustomer extends Customer {
+    private static NotFoundCustomer notFoundCustomer;
+
+    private NotFoundCustomer() {
+    }
+
+    public static NotFoundCustomer getNotFoundCustomer() {
+        if (notFoundCustomer == null)
+            notFoundCustomer = new NotFoundCustomer();
+        return notFoundCustomer;
+    }
+
+    @Override
+    public String toString() {
+        return "Can't Find the Customer";
     }
 }
 class Manage {
@@ -63,35 +61,38 @@ class Manage {
     public String registerCustomer(String name, String email, String phoneNumber) {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         Random random = new Random();
-        Customer customer = new Customer();
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < 11; i++) {
             int index = random.nextInt(characters.length());
             result.append(characters.charAt(index));
         }
         try {
-            customer.setName(name);
-            customer.setPhoneNumber(phoneNumber);
-            customer.setEmail(email);
-            customer.setCustomerId(result.toString());
-        } catch (InvalidCustomerException e) {
+            if(name == null || name.equals(""))
+                throw new InvalidCustomerException("Invalid Name");
+            else if (email == null || email.equals(""))
+                throw new InvalidCustomerException("Invalid eMail");
+            else if (phoneNumber == null || phoneNumber.equals(""))
+                throw new InvalidCustomerException("Invalid Phone Number");
+            else {
+                customerList.put(result.toString(),new Customer(result.toString(),name,email,phoneNumber));
+                return result.toString();
+            }
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-            return null;
         }
-        customerList.put(result.toString(),customer);
-        return result.toString();
+        return null;
     }
-    public String getCustomerDetails(String customerId) {
+    public Customer getCustomerDetails(String customerId) {
         if(customerList.containsKey(customerId))
-            return customerList.get(customerId).display();
-        return "Record Not Exist";
+            return customerList.get(customerId);
+        return NotFoundCustomer.getNotFoundCustomer();
     }
 }
 
-public class Scratch {
+class Scratch {
     public static void main(String[] args) {
         Manage manage=new Manage();
-        String t=manage.registerCustomer("hjbnkj","vvjbjhbj","6555");
+        String t=manage.registerCustomer("gopi","@1234","55452545");
         System.out.println(manage.getCustomerDetails(t));
     }
 }
