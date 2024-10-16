@@ -1,5 +1,3 @@
-package com.example.WebApp;
-
 class Account {
     private int accountNumber;
     private double balance;
