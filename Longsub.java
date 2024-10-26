@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
-class Scratch {
+class Londsub {
 
     public static List<Integer> findLIS(ArrayList<Integer> nums) {
         int n = nums.size();
