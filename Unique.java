@@ -15,9 +15,9 @@ class Unique {
         PriorityQueue<String> q = new PriorityQueue<>(
                 (a, b) -> {
                     if (a.length() != b.length()) {
-                        return Integer.compare(a.length(), b.length()); // Sort by length
+                        return Integer.compare(a.length(), b.length()); 
                     }
-                    return a.compareTo(b); // Sort alphabetically
+                    return a.compareTo(b); 
                 }
         );
         for(String i:set) {
