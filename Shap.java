@@ -1,7 +1,7 @@
 class Shape
 {
-    String color;
-    boolean filled;
+    private String color;
+    private boolean filled;
     Shape()
     {
         color="green";
@@ -31,7 +31,7 @@ class Shape
 }
 class Circle extends Shape
 {
-    double radius;
+    private double radius;
     Circle(double radius)
     {
         this.radius=radius;
@@ -60,10 +60,10 @@ class Circle extends Shape
     void display()
     {
         System.out.println("Circle with radius "+radius+" has area "+getArea()+" and perimeter "+getPerimeter());
-        System.out.println("Color: "+color+" and filled: "+filled);
+        System.out.println("Color: "+getColor()+" and filled: "+isFilled());
     }
 }
-public class Shap
+public class Main
 {
     public static void main(String[] args)
     {
