@@ -1,4 +1,3 @@
-package com.example.WebApp;
 
 class Employee {
     private String name,designation;
