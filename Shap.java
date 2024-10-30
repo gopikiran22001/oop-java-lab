@@ -63,7 +63,7 @@ class Circle extends Shape
         System.out.println("Color: "+getColor()+" and filled: "+isFilled());
     }
 }
-public class Main
+public class Shap
 {
     public static void main(String[] args)
     {
